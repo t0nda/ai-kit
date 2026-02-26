@@ -1,5 +1,5 @@
 name: Install Claude Code
-description: Installs Claude Code via pnpm if not already installed
+description: Installs Claude Code via npm if not already installed
 
 runs:
   using: composite
@@ -11,6 +11,6 @@ runs:
           echo "Claude Code is already installed: $(claude --version)"
         else
           echo "Installing Claude Code..."
-          pnpm add -g @anthropic-ai/claude-code
+          npm install -g @anthropic-ai/claude-code
           echo "Claude Code installed: $(claude --version)"
         fi
