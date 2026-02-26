@@ -1,0 +1,14 @@
+{
+  "name": "markdown-to-pdf-skill",
+  "version": "1.0.0",
+  "description": "Convert Markdown to styled PDF using markdown-it and Puppeteer",
+  "private": true,
+  "dependencies": {
+    "markdown-it": "^14.0.0",
+    "markdown-it-footnote": "^4.0.0",
+    "markdown-it-task-lists": "^2.1.1",
+    "markdown-it-emoji": "^3.0.0",
+    "highlight.js": "^11.9.0",
+    "puppeteer": "^22.0.0"
+  }
+}
