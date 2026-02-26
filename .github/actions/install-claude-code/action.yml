@@ -1,0 +1,16 @@
+name: Install Claude Code
+description: Installs Claude Code via pnpm if not already installed
+
+runs:
+  using: composite
+  steps:
+    - name: Install Claude Code
+      shell: bash
+      run: |
+        if command -v claude &> /dev/null; then
+          echo "Claude Code is already installed: $(claude --version)"
+        else
+          echo "Installing Claude Code..."
+          pnpm add -g @anthropic-ai/claude-code
+          echo "Claude Code installed: $(claude --version)"
+        fi

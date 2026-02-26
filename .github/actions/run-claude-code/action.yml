@@ -1,0 +1,14 @@
+name: Run Claude Code
+description: Runs Claude Code with a given prompt
+
+inputs:
+  prompt:
+    description: The prompt to pass to Claude Code
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Run Claude Code
+      shell: bash
+      run: claude -p "${{ inputs.prompt }}"

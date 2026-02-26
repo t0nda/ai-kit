@@ -16,5 +16,10 @@ jobs:
         with:
           node-version: '22'
 
-      - name: Print Hello World
-        run: node -e "console.log('hello world')"
+      - name: Install Claude Code
+        uses: ./.github/actions/install-claude-code
+
+      - name: Run Claude Code
+        uses: ./.github/actions/run-claude-code
+        with:
+          prompt: "Analyzuj codebase"
