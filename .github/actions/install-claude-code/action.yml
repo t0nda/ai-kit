@@ -1,6 +1,12 @@
 name: Install Claude Code
 description: Installs Claude Code via npm if not already installed
 
+inputs:
+  install-litellm:
+    description: 'Whether to install LiteLLM'
+    required: false
+    default: 'false'
+
 runs:
   using: composite
   steps:
@@ -14,3 +20,24 @@ runs:
           npm install -g @anthropic-ai/claude-code
           echo "Claude Code installed: $(claude --version)"
         fi
+
+    - name: Ensure Python and pip
+      if: ${{ inputs.install-litellm == 'true' }}
+      shell: bash
+      run: |
+        if command -v python3 &> /dev/null && command -v pip3 &> /dev/null; then
+          echo "Python already available: $(python3 --version)"
+        else
+          echo "Python/pip not found, installing..."
+          sudo apt-get update -q
+          sudo apt-get install -y python3 python3-pip
+          echo "Python installed: $(python3 --version)"
+        fi
+
+    - name: Install LiteLLM
+      if: ${{ inputs.install-litellm == 'true' }}
+      shell: bash
+      run: |
+        echo "Installing LiteLLM..."
+        pip3 install litellm
+        echo "LiteLLM installed: $(pip3 show litellm | grep Version)"
