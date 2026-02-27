@@ -5,7 +5,7 @@ inputs:
   install-litellm:
     description: 'Whether to install LiteLLM'
     required: false
-    default: 'false'
+    default: 'true'
 
 runs:
   using: composite
